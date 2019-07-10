@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>랜덤 문자열 생성기</title>
+        
+        <link href="/kigui.css" rel="stylesheet">
+        <script src="/script.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', function() {
+                var number = document.getElementById('nu');
+                var smallEn = document.getElementById('smallEn');
+                var largeEn = document.getElementById('largeEn');
+                var txtRandLength = document.getElementById('txtRandLength');
+                document.getElementById('btnGenerateRand').onclick = function() {
+                    var val = '';
+                    val += number.checked ? '1' : '';
+                    val += smallEn.checked ? 'a' : '';
+                    val += largeEn.checked ? 'A' : '';
+                    var length = 4;
+                    length = parseInt(txtRandLength.value);
+
+                    var randomStr = new RandomString(val, length);
+                    document.getElementById('resultBox').innerHTML = randomStr.toString();
+                };
+            });
+        </script>
+        <style>
+            .option {
+                display:flex;
+                justify-content: space-around;
+                padding:10px 0 10px 0;
+            }
+        </style>
+        <meta charset='utf-8' />
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    </head>
+    <body class="kigui">
+        <header class="kigui header">
+            <h1 class="title">
+                랜덤 문자열 생성기
+            </h1>    
+        </header>
+        <div class="kigui header-space"></div>
+        <section class="kigui">
+            <div class="kigui frame">
+                <h2>소개</h2>
+                <p>선택한 조건으로 랜덤한 문자열을 생성합니다.</p>
+                <p>귀찮은 게임닉네임 짓기 매크로풍의 닉네임 어떤가요?</p>
+            </div>
+            <div class="kigui frame">
+                <h2>설정</h2>
+                <h4>문자 종류</h4>
+                <div class="option">
+                    <label class="kigui switch" for="largeEn">
+                        <input type="checkbox" id="largeEn" checked/>
+                        <div class="lever"></div>
+                        <div class="bar"></div>
+                        <span class="text">영어(대문자)</span>
+                    </label>
+                    <label class="kigui switch" for="smallEn">
+                        <input type="checkbox" id="smallEn" checked/>
+                        <div class="lever"></div>
+                        <div class="bar"></div>
+                        <span class="text">영어(소문자)</span>
+                    </label>
+                    <label class="kigui switch" for="nu">
+                        <input type="checkbox" id="nu" checked/>
+                        <div class="lever"></div>
+                        <div class="bar"></div>
+                        <span class="text">숫자</span>
+                    </label>
+                </div>
+                <h4>문자 길이</h4>
+                <div class="kigui txtbox line">
+                    <input id="txtRandLength" type="number" />
+                    <div class="uline"></div>
+                </div>
+                <button id="btnGenerateRand" class="kigui btn box">생성</button>
+                <button id="btnGenerateCopyRand" class="kigui btn box">생성 및 복사</button>
+
+                <div class="kigui txtbox box">
+                    <textarea id="resultBox"></textarea>
+                    <label for="resultBox"></label>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
