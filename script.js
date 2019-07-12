@@ -3,9 +3,12 @@ var RandomString = function(type, length) {
     this.charList = [];
     this.length = length || 4;
     type = type || '1aA';
-    
+
+    if(type.indexOf('i') !== -1) {
+        this.charList.push('I', 'l');
+    }
+
     if(type.indexOf('a') !== -1) {
-        
         for (i = 'a'.charCodeAt(); i <= 'z'.charCodeAt(); i++) {
             this.charList.push(String.fromCharCode(i));
         }
